@@ -25,6 +25,7 @@ public class MovePlayer : MonoBehaviour
         var movement = value.Get<Vector2>();
         _direction = new Vector3(movement.x, 0f, movement.y);
         _animator.SetBool(Running, movement.sqrMagnitude > 0f);
+        
     }
 
     private void FixedUpdate()

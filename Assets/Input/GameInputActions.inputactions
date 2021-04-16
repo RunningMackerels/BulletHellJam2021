@@ -29,7 +29,7 @@
                 {
                     "name": "up",
                     "id": "7bcb5392-c6b9-40fb-b71a-57c930037a81",
-                    "path": "<Keyboard>/leftArrow",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

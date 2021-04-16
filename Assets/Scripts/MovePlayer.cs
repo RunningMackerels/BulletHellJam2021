@@ -31,5 +31,9 @@ public class MovePlayer : MonoBehaviour
     private void FixedUpdate()
     {
         transform.position += _direction * (velocity * TimeLord.Instance.DeltaTime);
+        float angle = 
+            Vector3.Dot(_direction, Vector3.right) * 90f
+            + Mathf.Clamp(Vector3.Dot(_direction, Vector3.forward), -1f, 0) * 180f;
+        transform.rotation = Quaternion.Euler(Vector3.up * (angle));
     }
 }

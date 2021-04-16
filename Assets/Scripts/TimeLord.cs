@@ -27,7 +27,7 @@ public class TimeLord : MonoBehaviour
     {
         if (_instance != null && _instance != this)
         {
-            Destroy(gameObject);
+            DestroyImmediate(gameObject);
         }
         else
         {

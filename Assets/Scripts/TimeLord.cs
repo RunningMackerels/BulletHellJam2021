@@ -19,6 +19,10 @@ public class TimeLord : MonoBehaviour
     
     public float RawDeltaTime => Time.deltaTime;
 
+    public float Now => Time.time;
+
+    public float SpeedMultiplier => _speedMultiplier;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)

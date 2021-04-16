@@ -29,6 +29,6 @@ public class MovePlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.position += _direction * (velocity * Time.deltaTime);
+        transform.position += _direction * (velocity * TimeLord.Instance.DeltaTime);
     }
 }

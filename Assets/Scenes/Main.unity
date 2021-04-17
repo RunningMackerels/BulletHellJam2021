@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17704871, g: 0.22163437, b: 0.30390358, a: 1}
+  m_IndirectSpecularColor: {r: 0.17704904, g: 0.2216347, b: 0.3039041, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -722,10 +722,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8343886681644839152, guid: f0944c3a639e657469b57894a519e0dc, type: 3}
-      propertyPath: _WaveSettings
-      value: 
-      objectReference: {fileID: 11400000, guid: d24a935ac24fcd0408381c785b1e74c2, type: 2}
     - target: {fileID: 8343886681644839154, guid: f0944c3a639e657469b57894a519e0dc, type: 3}
       propertyPath: m_Name
       value: Turret
@@ -874,6 +870,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 704232193}
   dumpTime: 0.2
+--- !u!1 &1676097577 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8343886681644839154, guid: f0944c3a639e657469b57894a519e0dc, type: 3}
+  m_PrefabInstance: {fileID: 1471150774}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &1676097578
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1676097577}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
+--- !u!1 &1780974472 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 0ef75fadab204440db5f051ed8118f2f, type: 3}
+  m_PrefabInstance: {fileID: 1919348676}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &1780974473
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780974472}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 0
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1001 &1919348676
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1000,6 +1038,40 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00f1187a1048b4b47b15e9a5f1ca9eb9, type: 3}
+--- !u!1 &1945800934 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: 00f1187a1048b4b47b15e9a5f1ca9eb9, type: 3}
+  m_PrefabInstance: {fileID: 1945800933}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1945800935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945800934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_BuildHeightMesh: 0
+  m_NavMeshData: {fileID: 23800000, guid: 4683e362e09bf9e4abb85c3432ca80f9, type: 2}
 --- !u!1001 &1777774140696531005
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1007,10 +1079,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1552133458, guid: 00bde19a258434249843ffa95bd32d19, type: 3}
-      propertyPath: rampUpTime
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 1471135531908576677, guid: 00bde19a258434249843ffa95bd32d19, type: 3}
       propertyPath: m_Name
       value: Albert

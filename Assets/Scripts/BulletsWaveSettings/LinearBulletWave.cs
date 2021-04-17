@@ -39,9 +39,9 @@ public class LinearBulletWave : BulletsWaveSettings
             BulletData newBullet = new BulletData()
             {
                 Speed = _BulletsSpeed,
-                Angle = i * 360f / 20,
+                Angle = i * 360f / _NumberOfBullets,
                 Prefab = _BulletPrefab
-        };
+            };
 
             bullets.Add(newBullet);
         }

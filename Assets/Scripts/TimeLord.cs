@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class TimeLord : MonoBehaviour
@@ -23,6 +24,10 @@ public class TimeLord : MonoBehaviour
 
     public float SpeedMultiplier => _speedMultiplier;
 
+    public float LevelTime => _levelTime;
+
+    private float _levelTime = 10;
+    
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -38,5 +43,15 @@ public class TimeLord : MonoBehaviour
     public void SetSpeed(float speed)
     {
         _speedMultiplier = speed;
+    }
+
+    public void Update()
+    {
+        _levelTime -= DeltaTime;
+    }
+
+    public void ChangeLevelTime(float delta)
+    {
+        _levelTime += delta;
     }
 }

@@ -12,4 +12,9 @@
 ### Type of game
 * Crossy-road like game
 * ISO + ORTHO
-* Level floating in space
+* Levels floating in space
+* You have 10 seconds to catch Cubinger in each level
+* Levels *may* be randomly generated
+* When you cath Cubinger, you are transported to another level
+* Infinite catcher ;)
+* Score indexed to Cubinger and Powerups

@@ -54,4 +54,9 @@ public class TimeLord : MonoBehaviour
     {
         _levelTime += delta;
     }
+
+    public void SetLevelTime(float time)
+    {
+        _levelTime = time;
+    }
 }

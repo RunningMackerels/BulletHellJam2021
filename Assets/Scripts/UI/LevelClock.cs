@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -18,6 +19,7 @@ public class LevelClock : MonoBehaviour
     {
         
         wholeNumberText.text = TimeLord.Instance.LevelTime.ToString("0");
-        decimaNumberText.text = TimeLord.Instance.LevelTime.ToString(".000").Remove(0,1);
+        decimaNumberText.text = (TimeLord.Instance.LevelTime - Math.Floor(TimeLord.Instance.LevelTime))
+            .ToString("F3").Remove(0,1);
     }
 }

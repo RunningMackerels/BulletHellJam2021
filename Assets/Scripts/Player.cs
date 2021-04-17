@@ -1,3 +1,4 @@
+using PowerUps;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -21,5 +22,10 @@ public class Player : MonoBehaviour
         {
             other.gameObject.GetComponent<IPowerUp>().ActivatePowerUp(this);
         }
+    }
+
+    internal void Damage(int damage)
+    {
+        Debug.LogError("Ouch, that hurt");
     }
 }

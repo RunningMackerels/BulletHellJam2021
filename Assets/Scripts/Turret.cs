@@ -22,7 +22,7 @@ public class Turret : MonoBehaviour
         {
             Bullet instance = Instantiate(bullet.Prefab, transform.position, Quaternion.Euler(0f, bullet.Angle, 0f), transform);
 
-            instance.Initialize(bullet.Speed);
+            instance.Initialize(bullet.Speed, _WaveSettings.Damage);
         }
     }
 }

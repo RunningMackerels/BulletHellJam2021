@@ -5,4 +5,6 @@ using UnityEngine;
 public abstract class BulletsWaveSettings : ScriptableObject
 {
     public abstract List<BulletData> GetBullets();
+
+    public int Damage = 1;
 }

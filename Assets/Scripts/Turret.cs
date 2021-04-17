@@ -25,6 +25,6 @@ public class Turret : MonoBehaviour
             instance.Initialize(bullet.Speed);
         }
 
-        bullets.ForEach(bullet => Debug.Log(bullet.ToString()));
+        //bullets.ForEach(bullet => Debug.Log(bullet.ToString()));
     }
 }

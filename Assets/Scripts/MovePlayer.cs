@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 public class MovePlayer : MonoBehaviour
@@ -23,10 +24,13 @@ public class MovePlayer : MonoBehaviour
     private Vector3 _smoothingDirection;
 
     private Vector3 _facing = Vector3.zero;
-    
+
+    private NavMeshAgent _agent = null;
+
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _agent = GetComponent<NavMeshAgent>();
     }
 
     void OnMove(InputValue value)
@@ -48,7 +52,7 @@ public class MovePlayer : MonoBehaviour
     {
         _rampUpDirection = Vector3.SmoothDamp(_rampUpDirection, _direction, ref _smoothingDirection, rampUpTime);
         _animator.SetBool(Running, _rampUpDirection.sqrMagnitude > SMALLNUMBER);
-        transform.position += _rampUpDirection * (velocity * TimeLord.Instance.DeltaTime);
+        _agent.Move(_rampUpDirection * (velocity * TimeLord.Instance.DeltaTime));
 
         float angle = _facing.x * 90.0f;
         angle -= _facing.z < 0f ? 180.0f : 0f;

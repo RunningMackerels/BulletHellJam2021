@@ -1,25 +1,25 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class LevelClock : MonoBehaviour
+namespace UI
 {
-
-    [FormerlySerializedAs("intText")] [SerializeField] 
-    private TMP_Text wholeNumberText = null;
-
-    [FormerlySerializedAs("decText")] [SerializeField] 
-    private TMP_Text decimaNumberText = null;
-
-    // Update is called once per frame
-    void Update()
+    public class LevelClock : MonoBehaviour
     {
+
+        [SerializeField] 
+        private TMP_Text wholeNumberText = null;
+
+        [FormerlySerializedAs("decimaNumberText")] [FormerlySerializedAs("decText")] [SerializeField] 
+        private TMP_Text decimalNumberText = null;
+
+        // Update is called once per frame
+        void Update()
+        {
         
-        wholeNumberText.text = TimeLord.Instance.LevelTime.ToString("0");
-        decimaNumberText.text = (TimeLord.Instance.LevelTime - Math.Floor(TimeLord.Instance.LevelTime))
-            .ToString("F3").Remove(0,1);
+            wholeNumberText.text = TimeLord.Instance.LevelTime.ToString("0");
+            decimalNumberText.text = (TimeLord.Instance.LevelTime - Mathf.Floor(TimeLord.Instance.LevelTime))
+                .ToString("F3").Remove(0,1);
+        }
     }
 }

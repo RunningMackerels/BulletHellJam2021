@@ -10,6 +10,8 @@ public class GameState : MonoBehaviour
     public static GameState Instance => _instance;
     #endregion //Singleton
 
+    private int _score = 0;
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -27,5 +29,10 @@ public class GameState : MonoBehaviour
     public void CubingerGrabbed()
     {
         Debug.LogError("You win, go to next level now");
+    }
+
+    public void AddScore(int newScore)
+    {
+        _score += newScore;
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,6 +13,10 @@ namespace PowerUps
         #endregion //Singleton
 
         private List<Bullet> _activeBullets = new List<Bullet>();
+
+        #region Light Bullets
+        private IEnumerator _delayedLightBulletsStop = null;
+        #endregion
 
         private void Awake()
         {
@@ -35,6 +40,30 @@ namespace PowerUps
         public void UnregisterBullet(Bullet bullet)
         {
             _activeBullets.Remove(bullet);
+        }
+
+        public void TriggerLightBullets(float delay)
+        {
+            ToggleLightBullets(true);
+
+            if (_delayedLightBulletsStop != null)
+            {
+                StopCoroutine(_delayedLightBulletsStop);
+            }
+            _delayedLightBulletsStop = DelayStopLightBullets(delay);
+            StartCoroutine(_delayedLightBulletsStop);
+        }
+
+        private void ToggleLightBullets(bool state)
+        {
+            _activeBullets.ForEach(bullet => bullet.ToggleLightBullet(state));
+        }
+
+        private IEnumerator DelayStopLightBullets(float delay)
+        {
+            yield return new WaitForSeconds(delay / TimeLord.Instance.SpeedMultiplier);
+
+            ToggleLightBullets(false);
         }
     }
 }

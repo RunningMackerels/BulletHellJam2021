@@ -1,5 +1,5 @@
 using PowerUps;
-using System;
+using System.Collections;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -8,10 +8,22 @@ public class Bullet : MonoBehaviour
 
     private int _damage = 1;
 
+    [SerializeField]
+    private Color _NormalColor = Color.red;
+    [SerializeField]
+    private Color _LightColor = Color.yellow;
+
+    private Collider _collider = null;
+    private Renderer _renderer = null;
+
     public void Initialize(float speed, int damage)
     {
         _speed = speed;
         _damage = damage;
+
+        _collider = GetComponent<Collider>();
+        _renderer = GetComponentInChildren<Renderer>();
+        ToggleLightBullet(false);
 
         PowerUpManager.Instance.RegisterBullet(this);
     }
@@ -34,4 +46,10 @@ public class Bullet : MonoBehaviour
         PowerUpManager.Instance.UnregisterBullet(this);
         Destroy(gameObject);
     }
+
+    public void ToggleLightBullet(bool state)
+    {
+        _collider.enabled = !state;
+        _renderer.material.color = state ? _LightColor : _NormalColor;
+    } 
 }

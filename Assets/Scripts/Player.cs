@@ -9,6 +9,13 @@ public class Player : MonoBehaviour
     [SerializeField]
     private LayerMask _PoweUpsLayer;
 
+    private Collider _collider = null;
+
+    private void Awake()
+    {
+        _collider = GetComponent<Collider>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         int otherLayermask = 1 << other.gameObject.layer;
@@ -27,5 +34,10 @@ public class Player : MonoBehaviour
     internal void Damage(int damage)
     {
         Debug.LogError("Ouch, that hurt");
+    }
+
+    public void ToggleQuantumState(bool state)
+    {
+        _collider.enabled = !state;
     }
 }

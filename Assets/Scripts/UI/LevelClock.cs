@@ -17,7 +17,7 @@ namespace UI
         void Update()
         {
         
-            wholeNumberText.text = TimeLord.Instance.LevelTime.ToString("0");
+            wholeNumberText.text = Mathf.Floor(TimeLord.Instance.LevelTime).ToString("0");
             decimalNumberText.text = (TimeLord.Instance.LevelTime - Mathf.Floor(TimeLord.Instance.LevelTime))
                 .ToString("F3").Remove(0,1);
         }

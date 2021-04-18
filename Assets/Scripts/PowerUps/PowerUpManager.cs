@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace PowerUps
 {
@@ -14,6 +15,8 @@ namespace PowerUps
 
         private List<Bullet> _activeBullets = new List<Bullet>();
 
+        private List<NavMeshObstacle> _obstacles = new List<NavMeshObstacle>();
+
         #region Light Bullets Members
         private IEnumerator _delayedLightBulletsStop = null;
 
@@ -25,6 +28,12 @@ namespace PowerUps
         public bool BlackHoleActive => _delayedBlackHoleStop != null;
         #endregion
 
+        #region Quantum State
+        private IEnumerator _delayedQuantumStateStop = null;
+        public bool QuantumStateActive => _delayedQuantumStateStop != null;
+
+        #endregion
+        
         private void Awake()
         {
             if (_instance != null && _instance != this)
@@ -47,6 +56,16 @@ namespace PowerUps
         public void UnregisterBullet(Bullet bullet)
         {
             _activeBullets.Remove(bullet);
+        }
+
+        public void RegisterObstacle(NavMeshObstacle obstable)
+        {
+            _obstacles.Add(obstable);
+        }
+
+        public void UnregisterObstacle(NavMeshObstacle obstable)
+        {
+            _obstacles.Remove(obstable);
         }
 
         #region Light Bullets
@@ -97,6 +116,30 @@ namespace PowerUps
             TimeLord.Instance.SpeedMultiplier *= slowDownMultiplier;
 
             _delayedBlackHoleStop = null;
+        }
+        #endregion
+
+        #region Quantum State
+        public void TriggerQuantumState(float delay, Player player)
+        {
+            player.ToggleQuantumState(true);
+            _obstacles.ForEach(obstacle => obstacle.enabled = false);
+            if (_delayedQuantumStateStop != null)
+            {
+                StopCoroutine(_delayedQuantumStateStop);
+            }
+            _delayedQuantumStateStop = DelayStopQuantumState(delay, player);
+            StartCoroutine(_delayedQuantumStateStop);
+        }
+
+        private IEnumerator DelayStopQuantumState(float delay, Player player)
+        {
+            yield return new WaitForSeconds(delay / TimeLord.Instance.SpeedMultiplier);
+
+            player.ToggleQuantumState(false);
+            _obstacles.ForEach(obstacle => obstacle.enabled = true);
+
+            _delayedQuantumStateStop = null;
         }
         #endregion
     }

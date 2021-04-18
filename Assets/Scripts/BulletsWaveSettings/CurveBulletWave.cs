@@ -21,9 +21,6 @@ public class CurveBulletWave : BulletsWaveSettings
     private float _BulletsBaseSpeed = 1f;
 
     [SerializeField]
-    private int _NumberOfBullets = 16;
-
-    [SerializeField]
     private Bullet _BulletPrefab = null;
 
     private float _lastPeriodStartedTimeStamp = 0f;

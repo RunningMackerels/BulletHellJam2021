@@ -16,14 +16,14 @@ public class Bullet : MonoBehaviour
     private Collider _collider = null;
     private Renderer _renderer = null;
 
-    public void Initialize(float speed, int damage)
+    public void Initialize(float speed, int damage, bool lightBullet)
     {
         _speed = speed;
         _damage = damage;
 
         _collider = GetComponent<Collider>();
         _renderer = GetComponentInChildren<Renderer>();
-        ToggleLightBullet(false);
+        ToggleLightBullet(lightBullet);
 
         PowerUpManager.Instance.RegisterBullet(this);
     }

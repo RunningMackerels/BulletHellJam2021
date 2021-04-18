@@ -16,6 +16,8 @@ namespace PowerUps
 
         #region Light Bullets
         private IEnumerator _delayedLightBulletsStop = null;
+
+        public bool LightBulletsActive => _delayedLightBulletsStop != null;
         #endregion
 
         private void Awake()
@@ -64,6 +66,8 @@ namespace PowerUps
             yield return new WaitForSeconds(delay / TimeLord.Instance.SpeedMultiplier);
 
             ToggleLightBullets(false);
+
+            _delayedLightBulletsStop = null;
         }
     }
 }

@@ -22,7 +22,17 @@ public class TimeLord : MonoBehaviour
 
     public float Now => Time.time;
 
-    public float SpeedMultiplier => _speedMultiplier;
+    public float SpeedMultiplier
+    {
+        get
+        {
+            return _speedMultiplier;
+        }
+        set
+        {
+            _speedMultiplier = value;
+        }
+    }
 
     public float LevelTime => _levelTime;
 
@@ -38,11 +48,6 @@ public class TimeLord : MonoBehaviour
         {
             _instance = this;
         }
-    }
-
-    public void SetSpeed(float speed)
-    {
-        _speedMultiplier = speed;
     }
 
     public void Update()

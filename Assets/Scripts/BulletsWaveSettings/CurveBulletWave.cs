@@ -35,12 +35,12 @@ public class CurveBulletWave : BulletsWaveSettings
 
     public override List<BulletData> GetBullets()
     {
-        if (TimeLord.Instance.Now - _lastPeriodStartedTimeStamp > _FirePeriod * TimeLord.Instance.SpeedMultiplier)
+        if (TimeLord.Instance.Now - _lastPeriodStartedTimeStamp > _FirePeriod)
         {
             _lastPeriodStartedTimeStamp = TimeLord.Instance.Now;
         }
 
-        float rationInPeriod = (TimeLord.Instance.Now - _lastPeriodStartedTimeStamp) / _FirePeriod * TimeLord.Instance.SpeedMultiplier;
+        float rationInPeriod = (TimeLord.Instance.Now - _lastPeriodStartedTimeStamp) / _FirePeriod;
 
         List<BulletData> bullets = new List<BulletData>();
 

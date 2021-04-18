@@ -53,6 +53,11 @@ public class TimeLord : MonoBehaviour
     public void Update()
     {
         _levelTime -= DeltaTime;
+
+        if (_levelTime <= 0f)
+        {
+            GameState.Instance.GameOver();
+        }
     }
 
     public void ChangeLevelTime(float delta)

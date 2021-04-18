@@ -28,7 +28,7 @@ namespace PowerUps
         public bool BlackHoleActive => _delayedBlackHoleStop != null;
         #endregion
 
-        #region Quantum State
+        #region Quantum State Members
         private IEnumerator _delayedQuantumStateStop = null;
         public bool QuantumStateActive => _delayedQuantumStateStop != null;
 
@@ -44,8 +44,6 @@ namespace PowerUps
             {
                 _instance = this;
             }
-
-            DontDestroyOnLoad(this);
         }
 
         public void RegisterBullet(Bullet bullet)
@@ -147,6 +145,13 @@ namespace PowerUps
         public void TriggerPhaser(float maxTurning)
         {
             _activeBullets.ForEach(bullet => bullet.PhaseIt(maxTurning));
+        }
+        #endregion
+
+        #region LHC
+        public void TriggerLHC(float duration, float maxSpeed, AnimationCurve damping, Player player)
+        {
+            player.TriggerLHC(duration, maxSpeed, damping);
         }
         #endregion
     }

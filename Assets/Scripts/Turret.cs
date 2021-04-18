@@ -6,10 +6,16 @@ public class Turret : MonoBehaviour
 {
     [SerializeField]
     private BulletsWaveSettings _WaveSettings = null;
+    private BulletsWaveSettings _WaveSettingsInstance = null;
+
+    private void Awake()
+    {
+        _WaveSettingsInstance = Instantiate(_WaveSettings);
+    }
 
     private void Update()
     {
-        Fire(_WaveSettings.GetBullets());
+        Fire(_WaveSettingsInstance.GetBullets());
     }
 
     private void Fire(List<BulletData> bullets)
@@ -23,7 +29,7 @@ public class Turret : MonoBehaviour
         {
             Bullet instance = Instantiate(bullet.Prefab, transform.position, Quaternion.Euler(0f, bullet.Angle, 0f), transform);
 
-            instance.Initialize(bullet.Speed, _WaveSettings.Damage, PowerUpManager.Instance.LightBulletsActive);
+            instance.Initialize(bullet.Speed, _WaveSettingsInstance.Damage, PowerUpManager.Instance.LightBulletsActive);
         }
     }
 }

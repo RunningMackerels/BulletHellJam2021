@@ -61,7 +61,8 @@ public class Player : MonoBehaviour
 
         Vector3 center = GameState.Instance.transform.position;
 
-        float angle = Vector3.Angle(GameState.Instance.transform.right, center - transform.position) * Mathf.Deg2Rad;
+        Vector3 pos = (center - transform.position).normalized;
+        float angle = Mathf.Atan2(pos.z, pos.x) + Mathf.PI;
         float radius = (transform.position - center).magnitude;
         while (alpha < 1f)
         {

@@ -9,9 +9,6 @@ namespace PowerUps
         private float _MaxTurning = 45f;
 
         [SerializeField]
-        private float _PowerUpDurantion = 2f;
-
-        [SerializeField]
         private int _score = 10;
 
         public void ActivatePowerUp(Player player)

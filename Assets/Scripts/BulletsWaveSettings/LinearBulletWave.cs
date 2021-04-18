@@ -12,8 +12,6 @@ public class LinearBulletWave : BulletsWaveSettings
     [SerializeField]
     private float _BulletsSpeed = 1f;
 
-    [SerializeField]
-    private int _NumberOfBullets = 20;
 
     [SerializeField]
     private Bullet _BulletPrefab = null;

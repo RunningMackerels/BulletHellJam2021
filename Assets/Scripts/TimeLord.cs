@@ -36,7 +36,7 @@ public class TimeLord : MonoBehaviour
 
     public float LevelTime => _levelTime;
 
-    private float _levelTime = 10;
+    private float _levelTime = 10f;
     
     private void Awake()
     {

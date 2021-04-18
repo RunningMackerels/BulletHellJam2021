@@ -12,7 +12,10 @@ public class GameState : MonoBehaviour
     public static GameState Instance => _instance;
     #endregion //Singleton
 
-    private int _score = 0;
+    public int Score { private set; get; } = 0;
+
+    [SerializeField]
+    private int _CubbingerScore = 100;
 
     private void Awake()
     {
@@ -31,18 +34,20 @@ public class GameState : MonoBehaviour
 
     public void CubingerGrabbed()
     {
-        Debug.LogError("You win, go to next level now");
+        Score += _CubbingerScore;
+        Debug.Log("WIN");
+        SceneManager.LoadSceneAsync("Main");
     }
 
     public void AddScore(int newScore)
     {
-        _score += newScore;
+        Score += newScore;
     }
 
     internal void GameOver()
     {
         //it should be the start scene when we have it
-        Debug.LogError("GAME OVER");
+        Debug.Log("GAME OVER");
         SceneManager.LoadSceneAsync("Main");
     }
 }

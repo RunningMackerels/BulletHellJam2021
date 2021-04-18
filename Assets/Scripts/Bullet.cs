@@ -1,4 +1,5 @@
 using PowerUps;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -51,5 +52,12 @@ public class Bullet : MonoBehaviour
     {
         _collider.enabled = !state;
         _renderer.material.color = state ? _LightColor : _NormalColor;
-    } 
+    }
+
+    internal void PhaseIt(float maxTurning)
+    {
+        float rotationAngle = UnityEngine.Random.Range(-maxTurning, maxTurning);
+
+        transform.Rotate(Vector3.up, rotationAngle);
+    }
 }

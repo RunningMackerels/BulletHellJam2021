@@ -33,7 +33,7 @@ namespace PowerUps
         public bool QuantumStateActive => _delayedQuantumStateStop != null;
 
         #endregion
-        
+
         private void Awake()
         {
             if (_instance != null && _instance != this)
@@ -140,6 +140,13 @@ namespace PowerUps
             _obstacles.ForEach(obstacle => obstacle.enabled = true);
 
             _delayedQuantumStateStop = null;
+        }
+        #endregion
+
+        #region Phaser
+        public void TriggerPhaser(float maxTurning)
+        {
+            _activeBullets.ForEach(bullet => bullet.PhaseIt(maxTurning));
         }
         #endregion
     }

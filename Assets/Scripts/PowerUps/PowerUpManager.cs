@@ -14,10 +14,15 @@ namespace PowerUps
 
         private List<Bullet> _activeBullets = new List<Bullet>();
 
-        #region Light Bullets
+        #region Light Bullets Members
         private IEnumerator _delayedLightBulletsStop = null;
 
         public bool LightBulletsActive => _delayedLightBulletsStop != null;
+        #endregion
+
+        #region Black Hole Members
+        private IEnumerator _delayedBlackHoleStop = null;
+        public bool BlackHoleActive => _delayedBlackHoleStop != null;
         #endregion
 
         private void Awake()
@@ -44,6 +49,7 @@ namespace PowerUps
             _activeBullets.Remove(bullet);
         }
 
+        #region Light Bullets
         public void TriggerLightBullets(float delay)
         {
             ToggleLightBullets(true);
@@ -69,5 +75,29 @@ namespace PowerUps
 
             _delayedLightBulletsStop = null;
         }
+        #endregion
+
+        #region Black Hole
+        public void TriggerBlackHole(float slowDownMultiplier, float delay)
+        {
+            TimeLord.Instance.SpeedMultiplier /= slowDownMultiplier;
+            
+            if (_delayedBlackHoleStop != null)
+            {
+                StopCoroutine(_delayedBlackHoleStop);
+            }
+            _delayedBlackHoleStop = DelayStopBlackHole(slowDownMultiplier, delay);
+            StartCoroutine(_delayedBlackHoleStop);
+        }
+
+        private IEnumerator DelayStopBlackHole(float slowDownMultiplier, float delay)
+        {
+            yield return new WaitForSeconds(delay / TimeLord.Instance.SpeedMultiplier);
+
+            TimeLord.Instance.SpeedMultiplier *= slowDownMultiplier;
+
+            _delayedBlackHoleStop = null;
+        }
+        #endregion
     }
 }

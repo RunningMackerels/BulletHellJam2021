@@ -15,9 +15,16 @@ public class Player : MonoBehaviour
 
     public Action OnLHCFinished;
 
+    [SerializeField]
+    private int _InitialHealth = 100;
+    private int _health;
+
+    public float HPPercentage => (float)_health / (float)_InitialHealth;
+
     private void Awake()
     {
         _collider = GetComponent<Collider>();
+        _health = _InitialHealth;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,7 +44,12 @@ public class Player : MonoBehaviour
 
     internal void Damage(int damage)
     {
-        Debug.LogError("Ouch, that hurt");
+        _health -= damage;
+
+        if (_health <= 0)
+        {
+            GameState.Instance.GameOver();
+        }
     }
 
     public void ToggleQuantumState(bool state)

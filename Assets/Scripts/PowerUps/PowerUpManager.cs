@@ -44,8 +44,6 @@ namespace PowerUps
             {
                 _instance = this;
             }
-
-            DontDestroyOnLoad(this);
         }
 
         public void RegisterBullet(Bullet bullet)

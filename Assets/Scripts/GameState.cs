@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameState : MonoBehaviour
 {
@@ -17,13 +19,14 @@ public class GameState : MonoBehaviour
         if (_instance != null && _instance != this)
         {
             DestroyImmediate(gameObject);
+            return;
         }
         else
         {
             _instance = this;
         }
 
-        DontDestroyOnLoad(this);
+        DontDestroyOnLoad(gameObject);
     }
 
     public void CubingerGrabbed()
@@ -34,5 +37,12 @@ public class GameState : MonoBehaviour
     public void AddScore(int newScore)
     {
         _score += newScore;
+    }
+
+    internal void GameOver()
+    {
+        //it should be the start scene when we have it
+        Debug.LogError("GAME OVER");
+        SceneManager.LoadSceneAsync("Main");
     }
 }

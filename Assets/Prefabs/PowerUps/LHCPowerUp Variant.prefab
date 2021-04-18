@@ -13,6 +13,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _powerUpDurantion: 2
+  _maxSpeed: 10
+  _damping:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1.01096
+      outSlope: 1.01096
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.48991355
+    - serializedVersion: 3
+      time: 0.2
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.8
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.9912969
+      outSlope: -0.9912969
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.5115274
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   _score: 10
 --- !u!1001 &4417593477055313570
 PrefabInstance:
@@ -23,7 +75,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1072566286208509115, guid: f1a0f029176929d408491be46fbb2ecd, type: 3}
       propertyPath: m_Name
-      value: LHCPowerUp
+      value: LHCPowerUp Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3520520039047696718, guid: f1a0f029176929d408491be46fbb2ecd, type: 3}
       propertyPath: m_RootOrder

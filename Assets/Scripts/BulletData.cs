@@ -15,6 +15,8 @@ public class BulletData
 
     public Bullet Prefab;
 
+    public Vector3 LocalOffset;
+
     public new string ToString()
     {
         return string.Format("Angle: {0} - Speed: {1}", Angle, Speed);

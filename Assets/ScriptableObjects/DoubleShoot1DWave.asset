@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857312c539229b5438c5aa6c2f2291e1, type: 3}
+  m_Name: DoubleShoot1DWave
+  m_EditorClassIdentifier: 
+  Damage: 1
+  _NumberOfBullets: 20
+  _FirePeriod: 1
+  _BulletsBaseSpeed: 5
+  _BulletPrefab: {fileID: 6005773042698041082, guid: 1d17b36c1edac8c40a482d4a599c7813, type: 3}
+  offset: {x: 0, y: 0.4, z: 0.8}

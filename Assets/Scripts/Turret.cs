@@ -27,7 +27,8 @@ public class Turret : MonoBehaviour
 
         foreach(BulletData bullet in bullets)
         {
-            Bullet instance = Instantiate(bullet.Prefab, transform.position, Quaternion.Euler(0f, bullet.Angle, 0f), transform);
+            Bullet instance = Instantiate(bullet.Prefab, transform.position, transform.rotation * Quaternion.Euler(0f, bullet.Angle, 0f), transform);
+            instance.transform.Translate(bullet.LocalOffset, Space.Self);
 
             instance.Initialize(bullet.Speed, _WaveSettingsInstance.Damage, PowerUpManager.Instance.LightBulletsActive);
         }

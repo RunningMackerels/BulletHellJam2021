@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d72bfc7fc7ca784aab6ba857dcc2f1c, type: 3}
-  m_Name: CurveBulletWave
+  m_Script: {fileID: 11500000, guid: 42974ead7d24fe543b8740b88b734973, type: 3}
+  m_Name: DoubleCurveBulletWave 1
   m_EditorClassIdentifier: 
   Damage: 1
   _NumberOfBullets: 16
@@ -44,12 +44,12 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: Infinity
+      inSlope: 1
       outSlope: 1
-      tangentMode: 71
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 1
@@ -57,7 +57,7 @@ MonoBehaviour:
       outSlope: 1
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -89,3 +89,4 @@ MonoBehaviour:
   _FirePeriod: 1
   _BulletsBaseSpeed: 5
   _BulletPrefab: {fileID: 6005773042698041082, guid: 1d17b36c1edac8c40a482d4a599c7813, type: 3}
+  offset: {x: 0.4, y: 0, z: 0.8}

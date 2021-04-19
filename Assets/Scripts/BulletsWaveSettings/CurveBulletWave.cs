@@ -37,33 +37,41 @@ public class CurveBulletWave : BulletsWaveSettings
             _lastPeriodStartedTimeStamp = TimeLord.Instance.Now;
         }
 
-        float rationInPeriod = (TimeLord.Instance.Now - _lastPeriodStartedTimeStamp) / _FirePeriod;
+        float ratioInPeriod = (TimeLord.Instance.Now - _lastPeriodStartedTimeStamp) / _FirePeriod;
 
         List<BulletData> bullets = new List<BulletData>();
 
         for (int i = 0; i < _NumberOfBullets; i++)
         {
             float degree = i * 360f / _NumberOfBullets;
-            float rationDegree = degree / 360f;
+            float ratioDegree = degree / 360f;
 
-            if (_RadialMaskPattern.Evaluate(rationDegree) < 0.5f)
+            if (_RadialMaskPattern.Evaluate(ratioDegree) < 0.5f)
             {
                 continue;
             }
 
-            if (Mathf.Abs(_RadialTimePattern.Evaluate(rationDegree) - rationInPeriod) < 0.01f)
+            if (Mathf.Abs(_RadialTimePattern.Evaluate(ratioDegree) - ratioInPeriod) < 0.01f)
             {
-                BulletData newBullet = new BulletData()
-                {
-                    Speed = _BulletsBaseSpeed * _RadialSpeedPattern.Evaluate(rationDegree),
-                    Angle = i * 360f / _NumberOfBullets,
-                    Prefab = _BulletPrefab
-                };
-
-                bullets.Add(newBullet);
+                GenerateBulletsData(_BulletsBaseSpeed * _RadialSpeedPattern.Evaluate(ratioDegree),
+                                    i * 360f / _NumberOfBullets,
+                                    _BulletPrefab,
+                                    ref bullets);
             }
         }
 
         return bullets;
+    }
+
+    protected virtual void GenerateBulletsData(float speed, float angle, Bullet prefab, ref List<BulletData> bulletData)
+    {
+        BulletData newBullet = new BulletData()
+        {
+            Speed = speed,
+            Angle = angle,
+            Prefab = prefab
+        };
+
+        bulletData.Add(newBullet);
     }
 }

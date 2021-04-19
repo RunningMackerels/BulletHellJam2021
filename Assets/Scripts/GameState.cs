@@ -36,7 +36,7 @@ public class GameState : MonoBehaviour
     {
         Score += _CubbingerScore;
         Debug.Log("WIN");
-        SceneManager.LoadSceneAsync("Main");
+        SceneManager.LoadScene("Main");
     }
 
     public void AddScore(int newScore)
@@ -48,6 +48,6 @@ public class GameState : MonoBehaviour
     {
         //it should be the start scene when we have it
         Debug.Log("GAME OVER");
-        SceneManager.LoadSceneAsync("Main");
+        SceneManager.LoadScene("Main");
     }
 }

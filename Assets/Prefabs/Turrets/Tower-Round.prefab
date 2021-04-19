@@ -13,19 +13,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _SpinSpeed: -120
---- !u!114 &7002438856718938517
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2899745655541578790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7258e13d9d144d84bb31d908b5037345, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _WaveSettings: {fileID: 11400000, guid: f12f6a020e642d14ea661be20a919fd6, type: 2}
 --- !u!114 &7002438857507317689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +137,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8343886681644839152, guid: f0944c3a639e657469b57894a519e0dc, type: 3}
+      propertyPath: _WaveSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: f12f6a020e642d14ea661be20a919fd6, type: 2}
     - target: {fileID: 8343886681644839154, guid: f0944c3a639e657469b57894a519e0dc, type: 3}
       propertyPath: m_Name
       value: Tower-Round

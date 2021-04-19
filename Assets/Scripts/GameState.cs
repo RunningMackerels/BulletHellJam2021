@@ -36,7 +36,7 @@ public class GameState : MonoBehaviour
     {
         Score += _CubbingerScore;
         Debug.Log("WIN");
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("PreMain");
     }
 
     public void AddScore(int newScore)

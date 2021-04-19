@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 1
   _NumberOfBullets: 20
-  _FirePeriod: 1
+  _FirePeriod: 0.5
   _BulletsBaseSpeed: 5
   _BulletPrefab: {fileID: 6005773042698041082, guid: 1d17b36c1edac8c40a482d4a599c7813, type: 3}
-  offset: {x: 0, y: 0.4, z: 0.8}
+  offset: {x: 0.6, y: 0, z: 0}

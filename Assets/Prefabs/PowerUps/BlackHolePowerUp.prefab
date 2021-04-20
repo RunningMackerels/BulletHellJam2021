@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 518f19389cad20a40baa8a2580fb59b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _score: 10
   _PowerUpDurantion: 2
   _SlowDownMultiplier: 2
-  _score: 10
 --- !u!1001 &4987886270386140760
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -139,6 +139,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8368426709148358114, guid: f1a0f029176929d408491be46fbb2ecd, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 87da7772b8e086a4b9b5d151a550be0f, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1a0f029176929d408491be46fbb2ecd, type: 3}
 --- !u!1 &5968238001265652865 stripped

@@ -19,6 +19,14 @@ public class Player : MonoBehaviour
     private int _InitialHealth = 100;
     private int _health;
 
+    [Header("Audio")]
+    [SerializeField]
+    private AudioSource _HitAudio;
+    [SerializeField]
+    private AudioSource _GrabPowerUpAudio;
+    [SerializeField]
+    private AudioSource _GrabCubingerAudio;
+
     [Header("Quantum Effect")]
     [SerializeField]
     private Transform _Visuals = null;
@@ -50,18 +58,22 @@ public class Player : MonoBehaviour
         int otherLayermask = 1 << other.gameObject.layer;
         if ((_CubingerLayer.value & otherLayermask) == otherLayermask)
         {
+            _GrabCubingerAudio.Play();
             GameState.Instance.CubingerGrabbed();
             return;
         }
 
         if ((_PoweUpsLayer.value & otherLayermask) == otherLayermask)
         {
+            _GrabPowerUpAudio.Play();
             other.gameObject.GetComponent<IPowerUp>().ActivatePowerUp(this);
         }
     }
 
     internal void Damage(int damage)
     {
+        _HitAudio.Play();
+
         _health -= damage;
 
         if (_health <= 0)

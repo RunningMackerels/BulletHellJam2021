@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb639d6d37c34f240bea9dd6e3dd7c7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _MaxTurning: 45
-  _PowerUpDurantion: 2
   _score: 10
+  _MaxTurning: 45
 --- !u!1001 &2725543724403629507
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24,7 +23,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1072566286208509115, guid: f1a0f029176929d408491be46fbb2ecd, type: 3}
       propertyPath: m_Name
-      value: PhaserPowerUp
+      value: PhaserPowerUp Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3520520039047696718, guid: f1a0f029176929d408491be46fbb2ecd, type: 3}
       propertyPath: m_RootOrder
@@ -70,6 +69,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8368426709148358114, guid: f1a0f029176929d408491be46fbb2ecd, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4149ca619799ab742b20b36879412882, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1a0f029176929d408491be46fbb2ecd, type: 3}
 --- !u!1 &3112434609390565752 stripped

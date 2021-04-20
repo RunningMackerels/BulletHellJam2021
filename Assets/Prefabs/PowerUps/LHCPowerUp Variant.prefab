@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7c1452c7544eb54598733270035ace1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _score: 10
   _powerUpDurantion: 2
   _maxSpeed: 10
   _damping:
@@ -65,7 +66,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _score: 10
 --- !u!1001 &4417593477055313570
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -121,6 +121,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8368426709148358114, guid: f1a0f029176929d408491be46fbb2ecd, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: ce00ab446de28634882812f611015039, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f1a0f029176929d408491be46fbb2ecd, type: 3}
 --- !u!1 &3723619850144338457 stripped

@@ -19,12 +19,38 @@ public class Player : MonoBehaviour
     private int _InitialHealth = 100;
     private int _health;
 
+    [Header("Audio")]
+    [SerializeField]
+    private AudioSource _HitAudio;
+    [SerializeField]
+    private AudioSource _GrabPowerUpAudio;
+    [SerializeField]
+    private AudioSource _GrabCubingerAudio;
+
+    [Header("Quantum Effect")]
+    [SerializeField]
+    private Transform _Visuals = null;
+    [SerializeField]
+    private float _QuantumEffectMagnitude = 0.01f;
+    private bool _quantumEffectActive = false;
+    private Vector3 _defaultVisualsLocalPosition = Vector3.zero;
+
     public float HPPercentage => (float)_health / (float)_InitialHealth;
 
     private void Awake()
     {
         _collider = GetComponent<Collider>();
         _health = _InitialHealth;
+
+        _defaultVisualsLocalPosition = _Visuals.localPosition;
+    }
+
+    private void Update()
+    {
+        if (_quantumEffectActive)
+        {
+            _Visuals.localPosition = UnityEngine.Random.insideUnitSphere * _QuantumEffectMagnitude;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -32,18 +58,22 @@ public class Player : MonoBehaviour
         int otherLayermask = 1 << other.gameObject.layer;
         if ((_CubingerLayer.value & otherLayermask) == otherLayermask)
         {
+            _GrabCubingerAudio.Play();
             GameState.Instance.CubingerGrabbed();
             return;
         }
 
         if ((_PoweUpsLayer.value & otherLayermask) == otherLayermask)
         {
+            _GrabPowerUpAudio.Play();
             other.gameObject.GetComponent<IPowerUp>().ActivatePowerUp(this);
         }
     }
 
     internal void Damage(int damage)
     {
+        _HitAudio.Play();
+
         _health -= damage;
 
         if (_health <= 0)
@@ -55,6 +85,13 @@ public class Player : MonoBehaviour
     public void ToggleQuantumState(bool state)
     {
         _collider.enabled = !state;
+
+        _quantumEffectActive = state;
+
+        if (!state)
+        {
+            _Visuals.localPosition = _defaultVisualsLocalPosition;
+        }
     }
 
     public void TriggerLHC(float duration, float maxSpeed, AnimationCurve damping)

@@ -5,9 +5,6 @@ using UnityEngine.AI;
 public class MazeFiller : MonoBehaviour
 {
     [SerializeField]
-    private NavMeshSurface _navMesh;
-
-    [SerializeField]
     private float _diameterOfSpawn = 5f;
 
     [Header("Walls")]
@@ -48,8 +45,19 @@ public class MazeFiller : MonoBehaviour
     [SerializeField]
     private GameObject _cubingerPrefab;
 
-    private Dictionary<Vector3, MazeCell.CellType> _mazeCells = new Dictionary<Vector3, MazeCell.CellType>();
+    [Header("PowerUps")]
+    [SerializeField]
+    private GameObject[] _powerUpsPrefabs;
 
+    [SerializeField]
+    private Transform _powerUpsRoot;
+
+    [SerializeField]
+    private int _minNumberOfPowerUps = 8;
+    [SerializeField]
+    private int _maxNumberOfPowerUps = 12;
+
+    private Dictionary<Vector3, MazeCell.CellType> _mazeCells = new Dictionary<Vector3, MazeCell.CellType>();
 
     public void Fill()
     {
@@ -61,7 +69,7 @@ public class MazeFiller : MonoBehaviour
 
         //turrets
         int numberOfTurrets = Mathf.RoundToInt(Random.Range(_minNumberOfTurrets, _maxNumberOfTurrets));
-        List<Vector3> turretPositions = GetRandomPartOfList(ref walls, numberOfTurrets, false);
+        List<Vector3> turretPositions = GetRandomPartOfList(ref walls, numberOfTurrets, true);
         turretPositions.ForEach(cell => Instantiate(_turretPrefabs[Random.Range(0, _turretPrefabs.Length)], cell, Quaternion.identity, _turretRoot));
 
         //albert
@@ -72,6 +80,11 @@ public class MazeFiller : MonoBehaviour
         position = Random.insideUnitCircle * _diameterOfSpawn;
         GameObject go = Instantiate(_cubingerPrefab, _cubingerSpawnPoint.transform.position + new Vector3(position.x, 0f, position.y), Quaternion.identity, _cubingerSpawnPoint.transform);
         go.AddComponent<LookAt>().SetTarget(albert.transform);
+
+        //power ups
+        int numberOfPowerUps = Mathf.RoundToInt(Random.Range(_minNumberOfPowerUps, _maxNumberOfPowerUps));
+        List<Vector3> powerUpsPositions = GetRandomPartOfList(ref empties, numberOfPowerUps, true);
+        powerUpsPositions.ForEach(cell => Instantiate(_powerUpsPrefabs[Random.Range(0, _powerUpsPrefabs.Length)], cell, Quaternion.identity, _powerUpsRoot));
     }
 
     internal void Register(Vector3 position, MazeCell.CellType type)
@@ -111,5 +124,4 @@ public class MazeFiller : MonoBehaviour
         }
         return output;
     }
-
 }

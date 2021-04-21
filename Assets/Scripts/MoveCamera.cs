@@ -1,30 +1,37 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MoveCamera : MonoBehaviour
 {
-    [SerializeField]
-    private Transform player;
+    private Transform _player;
 
     [SerializeField] 
     private float dumpTime = 0.3f;
     
     private Vector3 _offset = Vector3.zero;
     private Vector3 _velocity;
-    
-    
+
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        _offset = player.position - transform.position;
+        _offset = _player.position - transform.position;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        Vector3 targetPosition = player.position - _offset;
+        if (_player == null)
+        {
+            return;
+        }
+
+        Vector3 targetPosition = _player.position - _offset;
         
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref _velocity, dumpTime);
+    }
+
+    public void RegisterPlayer(Transform player)
+    {
+        _player = player;
     }
 }

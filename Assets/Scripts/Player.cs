@@ -42,6 +42,8 @@ public class Player : MonoBehaviour
         _collider = GetComponent<Collider>();
         _health = _InitialHealth;
 
+        FindObjectOfType<MoveCamera>().RegisterPlayer(transform);
+
         _defaultVisualsLocalPosition = _Visuals.localPosition;
     }
 

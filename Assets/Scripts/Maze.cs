@@ -1,7 +1,8 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class Maze : MonoBehaviour
 {
@@ -13,6 +14,14 @@ public class Maze : MonoBehaviour
         South = 1 << 1,
         East  = 1 << 2,
         West  = 1 << 3
+    }
+
+
+    private enum Tile
+    {
+        None = -1,
+        EastWest = 0,
+        NorthSouth
     }
 
     private Direction Opposite(Direction dir)
@@ -49,59 +58,177 @@ public class Maze : MonoBehaviour
         }
     }
 
+    private Vector3 Delta3D(Direction dir)
+    {
+
+        if((dir & Direction.North) != 0)
+        {
+            return Vector3.forward;
+        }
+
+        if ((dir & Direction.South) != 0)
+        {
+            return Vector3.back;
+        }
+
+        if ((dir & Direction.East) != 0)
+        {
+            return Vector3.left;
+        }
+
+        if ((dir & Direction.West) != 0)
+        {
+            return Vector3.right;
+        }
+
+        return Vector3.zero;
+    }
+
+
+    [Header("Maze Config")]
+    [SerializeField]
+    private Vector2Int _size = Vector2Int.zero;
+    [SerializeField]
+    private Vector2Int _blockSize = Vector2Int.zero;
 
     [SerializeField]
-    Vector2Int size = Vector2Int.zero;
+    private Vector3 _offset = Vector3.zero;
 
-    private Direction[,] _grid;
+    [SerializeField]
+    private int _seed = 0;
+
+    [Header("Blocks")]
+    [SerializeField]
+    private GameObject[] _blocks;
+
+    private Grid<Direction> _grid;
 
     private Direction[] _directions = { Direction.East, Direction.West, Direction.North, Direction.South };
+
 
     private void Awake() => DoMaze();
 
     private void DoMaze()
     {
+        Initialize();
         InitGrid();
-        List<Vector2Int> visitedCells = new List<Vector2Int>();
+        InitialMaze();
+        DrawMaze();
+    }
 
-        Vector2Int initialCell = Vector2Int.zero;
-        initialCell.y = Random.Range(0, size.y);
-
-        visitedCells.Add(initialCell);
-
-        while(visitedCells.Count > 0)
-        {
-            int nextIndex = NextCell(visitedCells.Count);
-            Vector2Int position = visitedCells[nextIndex];
-
-            foreach(Direction dir in _directions.OrderBy(x => Random.value).ToList())
-            {
-                Vector2Int next = position + Delta(dir);
-                if(next.x >= 0 && next.y >= 0 && next.x < size.x && next.y < size.y)
-                {
-                    _grid[next]
-                }
-            }
-        }
+    private void Initialize()
+    {
     }
 
     private int NextCell(int index)
     {
-        return index - 1;
+
+        if(UnityEngine.Random.value < 0.25)
+        {
+            return index - 1;
+        }
+        return UnityEngine.Random.Range(0, index);
     }
 
     private void InitGrid()
     {
-        _grid = new Direction[size.x, size.y];
+        _grid = new Grid<Direction>(_size.x, _size.y);
 
 
-        for (int i = 0; i < size.x; ++i)
+        for (int x = 0; x < _size.x; ++x)
         {
-            for (int j = 0; j < size.y; ++j)
+            for (int y = 0; y < _size.y; ++y)
             {
-                _grid[i, j] = Direction.None;
+                _grid[x, y] = Direction.None;
             }
         }
     }
 
+    private void InitialMaze()
+    {
+        if(_seed > 0)
+        {
+            UnityEngine.Random.seed = _seed;
+        }
+
+        List<Vector2Int> visitedCells = new List<Vector2Int>();
+
+        Vector2Int initialCell = Vector2Int.zero;
+        initialCell.x = UnityEngine.Random.Range(0, _size.x);
+
+        visitedCells.Add(initialCell);
+
+        while (visitedCells.Count > 0)
+        {
+            int nextIndex = NextCell(visitedCells.Count);
+            Vector2Int position = visitedCells[nextIndex];
+
+            foreach (Direction dir in _directions.OrderBy(x => UnityEngine.Random.value).ToList())
+            {
+                Vector2Int next = position + Delta(dir);
+                if (next.x >= 0 && next.y >= 0 && next.x < _size.x && next.y < _size.y && _grid[next] == Direction.None)
+                {
+                    _grid[next] |= dir;
+                    _grid[next] |= Opposite(dir);
+                    visitedCells.Add(next);
+                    nextIndex = -1;
+                }
+            }
+            if (nextIndex >= 0)
+            {
+                visitedCells.RemoveAt(nextIndex);
+            }
+        }
+    }
+
+    private void DrawMaze()
+    {
+
+        Assert.AreNotEqual(0, _blocks.Length);
+
+
+        int count = 0;
+        for (int x = 0; x < _size.x; ++x)
+        {
+            for (int y = 0; y < _size.y; ++y)
+            {
+                Tile id = Tile.None;
+                Vector3 position;
+                GameObject go;
+
+                id = ((_grid[x, y] & Direction.South) != 0) ? Tile.None : Tile.NorthSouth; //South
+
+
+                if (id >= 0)
+                {
+                    position = (_offset + new Vector3(x, 0, y)) * _blockSize.y;
+                    go = Instantiate(_blocks[(int)id], position, Quaternion.identity);
+                    go.transform.parent = transform;
+                    go.name = $"Cube.{count++}";
+                    go.GetComponent<CubeDirection>()._direction = _grid[x, y];
+                }
+
+                if ((_grid[x, y] & Direction.East) != 0) //East
+                {
+
+                    id = ((x + 1 < _size.x && ((_grid[x, y] | _grid[x + 1, y]) & Direction.South) != 0)) ? Tile.None : Tile.NorthSouth;
+                } else
+                {
+                    id = Tile.EastWest;
+                }
+
+                if (id >= 0)
+                {
+                    position = (_offset + new Vector3(x, 0, y)) * _blockSize.y;
+                    go = Instantiate(_blocks[(int)id], position, Quaternion.identity);
+                    go.transform.parent = transform;
+                    go.name = $"Cube.{count++}";
+                    go.GetComponent<CubeDirection>()._direction = _grid[x, y];
+                }
+            }
+        }
+
+        transform.localScale = Vector3.one * 2f;
+    }
+ 
 }

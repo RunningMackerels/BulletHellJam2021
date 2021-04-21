@@ -1140,6 +1140,55 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5972663155653435230, guid: 83cd9b668391a3f4da3408017fa32a15, type: 3}
   m_PrefabInstance: {fileID: 1096613904}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1112458373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1112458375}
+  - component: {fileID: 1112458374}
+  m_Layer: 0
+  m_Name: Maze
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1112458374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112458373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f00a8fc076114567a6d7ffb99032e7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: {x: 12, y: 12}
+  blockSize: {x: 2, y: 2}
+  offset: {x: -5.25, y: 0, z: -5.25}
+  blocks:
+  - {fileID: 8703444446439782464, guid: 8618c34586a2e4d6ca9397ae3021cafa, type: 3}
+  - {fileID: 8327773697819184848, guid: 4ae303fa45b484499935cbeb98074685, type: 3}
+--- !u!4 &1112458375
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112458373}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1160434512
 GameObject:
   m_ObjectHideFlags: 0
@@ -1588,6 +1637,10 @@ PrefabInstance:
     - target: {fileID: 5006303777910385546, guid: 896cfa97ab1ce4f1ca11ffac06b44fb0, type: 3}
       propertyPath: m_Name
       value: Tower-Round
+      objectReference: {fileID: 0}
+    - target: {fileID: 5006303777910385546, guid: 896cfa97ab1ce4f1ca11ffac06b44fb0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5006303777910385547, guid: 896cfa97ab1ce4f1ca11ffac06b44fb0, type: 3}
       propertyPath: m_RootOrder
@@ -2086,6 +2139,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 00f1187a1048b4b47b15e9a5f1ca9eb9, type: 3}
       propertyPath: m_Name
       value: floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 00f1187a1048b4b47b15e9a5f1ca9eb9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00f1187a1048b4b47b15e9a5f1ca9eb9, type: 3}
@@ -2710,6 +2767,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnvironmentAudio
       objectReference: {fileID: 0}
+    - target: {fileID: 8492156431780022988, guid: d0e57ed88f2c49842a46d3504cc1e775, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8492156431780022990, guid: d0e57ed88f2c49842a46d3504cc1e775, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -2753,6 +2814,10 @@ PrefabInstance:
     - target: {fileID: 8492156431780022990, guid: d0e57ed88f2c49842a46d3504cc1e775, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8492156431780022991, guid: d0e57ed88f2c49842a46d3504cc1e775, type: 3}
+      propertyPath: m_Volume
+      value: 0.22
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0e57ed88f2c49842a46d3504cc1e775, type: 3}

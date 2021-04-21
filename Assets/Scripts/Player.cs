@@ -1,6 +1,7 @@
 using PowerUps;
 using System;
 using System.Collections;
+using UI;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour
         _health = _InitialHealth;
 
         FindObjectOfType<MoveCamera>().RegisterPlayer(transform);
+        FindObjectOfType<HPBar>().RegisterPlayer(this);
 
         _defaultVisualsLocalPosition = _Visuals.localPosition;
     }

@@ -105,19 +105,19 @@ public class Maze : MonoBehaviour
 
     private Direction[] _directions = { Direction.East, Direction.West, Direction.North, Direction.South };
 
+    [SerializeField]
+    private bool _drawDebugCubes = false;
+
 
     private void Awake() => DoMaze();
 
+    [ContextMenu("New Maze")]
     private void DoMaze()
     {
-        Initialize();
         InitGrid();
         InitialMaze();
         DrawMaze();
-    }
-
-    private void Initialize()
-    {
+        GetComponent<MazeFiller>().Fill();
     }
 
     private int NextCell(int index)
@@ -206,6 +206,14 @@ public class Maze : MonoBehaviour
                     go.transform.parent = transform;
                     go.name = $"Cube.{count++}";
                     go.GetComponent<CubeDirection>()._direction = _grid[x, y];
+
+                    go.GetComponentsInChildren<MazeCell>().ToList().ForEach(item => item.Init());
+
+                    if (_drawDebugCubes)
+                    {
+                        go.GetComponentsInChildren<Renderer>().ToList().ForEach(item => item.enabled = true);
+                    }
+
                 }
 
                 if ((_grid[x, y] & Direction.East) != 0) //East
@@ -224,6 +232,13 @@ public class Maze : MonoBehaviour
                     go.transform.parent = transform;
                     go.name = $"Cube.{count++}";
                     go.GetComponent<CubeDirection>()._direction = _grid[x, y];
+
+                    go.GetComponentsInChildren<MazeCell>().ToList().ForEach(item => item.Init());
+
+                    if (_drawDebugCubes)
+                    {
+                        go.GetComponentsInChildren<Renderer>().ToList().ForEach(item => item.enabled = true);
+                    }
                 }
             }
         }

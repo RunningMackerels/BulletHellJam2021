@@ -46,8 +46,8 @@ public class GameState : MonoBehaviour
 
     internal void GameOver()
     {
-        //it should be the start scene when we have it
         Debug.Log("GAME OVER");
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Start");
+        Score = 0;
     }
 }

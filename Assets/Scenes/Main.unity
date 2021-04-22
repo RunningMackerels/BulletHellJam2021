@@ -886,10 +886,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 294216270}
     m_Modifications:
-    - target: {fileID: 5972663154991224681, guid: 83cd9b668391a3f4da3408017fa32a15, type: 3}
-      propertyPath: _Player
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 5972663155653435226, guid: 83cd9b668391a3f4da3408017fa32a15, type: 3}
       propertyPath: m_Name
       value: InGameUI
@@ -1017,8 +1013,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _size: {x: 12, y: 12}
   _blockSize: {x: 2, y: 2}
-  _offset: {x: -5.25, y: 0, z: -5.25}
+  _offset: {x: -5.25, y: 0.4, z: -5.25}
   _seed: 0
+  _worldScale: 2
   _blocks:
   - {fileID: 8703444446439782464, guid: 8618c34586a2e4d6ca9397ae3021cafa, type: 3}
   - {fileID: 8327773697819184848, guid: 4ae303fa45b484499935cbeb98074685, type: 3}
@@ -1051,14 +1048,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _diameterOfSpawn: 5
   _wallObjectsPrefabs:
-  - {fileID: 683382030270740438, guid: 0f30b68046b3ea0499d97ac3a2cf10eb, type: 3}
+  - {fileID: 2689431422092631511, guid: d8b6a6764329741da83518ddd0611106, type: 3}
+  - {fileID: 2926309629136631129, guid: e63b598f856204e54837fa60ebd80e74, type: 3}
+  - {fileID: 7776878629201585335, guid: 2ed54bb66864245b59132c247ee5a5b9, type: 3}
+  - {fileID: 827667618531908975, guid: ecb400d1f4a004130925f47d3318b520, type: 3}
+  - {fileID: 2689431422092631511, guid: bb4f05e993eec411083a7bd6bae0ae4e, type: 3}
+  - {fileID: 2689431422092631511, guid: 65138119dc2aa4c4188c62bf60baa197, type: 3}
+  - {fileID: 2689431422092631511, guid: 870ace7d010174511af102a4c3756de2, type: 3}
+  - {fileID: 2689431422092631511, guid: 5597550db409c48b9b2a6dc4977c05aa, type: 3}
+  - {fileID: 2689431422092631511, guid: 8e19efab8563144579d2a288791c8f4c, type: 3}
+  - {fileID: 2689431422092631511, guid: 8560cbb5247844251a22234de019dc53, type: 3}
+  - {fileID: 2689431422092631511, guid: cf807ae9fbb6b46a5a8e2acedd4cdb9e, type: 3}
+  - {fileID: 2689431422092631511, guid: 2fe0e827c100a43dcb7cd77048952444, type: 3}
+  - {fileID: 2689431422092631511, guid: 8df0423edbd054d04b8945c072d7bb11, type: 3}
+  - {fileID: 2689431422092631511, guid: cf3f7b4a25f554ec38b6a2f774b59838, type: 3}
+  - {fileID: 2689431422092631511, guid: dcf0bdec00a4f4f6ea9e669ca9499e2f, type: 3}
+  - {fileID: 2689431422092631511, guid: fe672215b39f74556bef544f0ff14310, type: 3}
+  _specialObjectsPrefabs:
+  - {fileID: 4069013158710536389, guid: 17b263d0d7dd74297b7cf2187770ed76, type: 3}
   _percentageOfWall: 0.5
   _wallsRoot: {fileID: 1531690806}
   _turretPrefabs:
   - {fileID: 1600109441583468602, guid: 64405073b8dc24064b8c9f36f4b369ce, type: 3}
   - {fileID: 5006303777910385546, guid: 896cfa97ab1ce4f1ca11ffac06b44fb0, type: 3}
   - {fileID: 1238221211633725817, guid: 5aface7c9aa448a4fb8a08dc924eebb7, type: 3}
-  _minNumberOfTurrets: 4
+  _minNumberOfTurrets: 5
   _maxNumberOfTurrets: 7
   _turretRoot: {fileID: 1602473936}
   _albertSpawnPoint: {fileID: 2055115254}
@@ -1272,7 +1286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 770c26d0c5ab54e4396f96548dbf6007, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
   dumpTime: 0.2
 --- !u!114 &1500460624
 MonoBehaviour:
@@ -1820,6 +1833,10 @@ PrefabInstance:
     - target: {fileID: 8492156431780022990, guid: d0e57ed88f2c49842a46d3504cc1e775, type: 3}
       propertyPath: m_RootOrder
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8492156431780022990, guid: d0e57ed88f2c49842a46d3504cc1e775, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.067
       objectReference: {fileID: 0}
     - target: {fileID: 8492156431780022990, guid: d0e57ed88f2c49842a46d3504cc1e775, type: 3}
       propertyPath: m_LocalPosition.x

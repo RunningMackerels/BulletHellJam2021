@@ -12,6 +12,9 @@ public class MazeFiller : MonoBehaviour
     private GameObject[] _wallObjectsPrefabs;
 
     [SerializeField]
+    private GameObject[] _specialObjectsPrefabs;
+
+    [SerializeField]
     private float _percentageOfWall = 0.7f;
 
     [SerializeField]
@@ -57,20 +60,25 @@ public class MazeFiller : MonoBehaviour
     [SerializeField]
     private int _maxNumberOfPowerUps = 12;
 
-    private Dictionary<Vector3, MazeCell.CellType> _mazeCells = new Dictionary<Vector3, MazeCell.CellType>();
+    private Dictionary<Vector3, MazeCell> _mazeCells = new Dictionary<Vector3, MazeCell>();
 
     public void Fill()
     {
-        SplitTypes(out List<Vector3> walls, out List<Vector3> empties);
+        SplitTypes(out List<Transform> walls, out List<Transform> empties);
 
         //solid walls
-        List<Vector3> solidWalls = GetRandomPartOfList(ref walls, Mathf.RoundToInt(_percentageOfWall * walls.Count), true);
-        solidWalls.ForEach(cell => Instantiate(_wallObjectsPrefabs[Random.Range(0, _wallObjectsPrefabs.Length)], cell, Quaternion.identity, _wallsRoot));
+        List<Transform> solidWalls = GetRandomPartOfList(ref walls, Mathf.RoundToInt(_percentageOfWall * walls.Count), true);
+        solidWalls.ForEach(cell => Instantiate(_wallObjectsPrefabs[Random.Range(0, _wallObjectsPrefabs.Length)], cell.position, cell.rotation, _wallsRoot));
+
+        //speacial walls
+        List<Transform> specialWalls = GetRandomPartOfList(ref walls, _specialObjectsPrefabs.Length, true);
+        specialWalls.ForEach(cell => Instantiate(_specialObjectsPrefabs[Random.Range(0, _specialObjectsPrefabs.Length)], cell.position, cell.rotation, _wallsRoot));
+
 
         //turrets
-        int numberOfTurrets = Mathf.RoundToInt(Random.Range(_minNumberOfTurrets, _maxNumberOfTurrets));
-        List<Vector3> turretPositions = GetRandomPartOfList(ref walls, numberOfTurrets, true);
-        turretPositions.ForEach(cell => Instantiate(_turretPrefabs[Random.Range(0, _turretPrefabs.Length)], cell, Quaternion.identity, _turretRoot));
+        int numberOfTurrets = Random.Range(_minNumberOfTurrets, _maxNumberOfTurrets + 1);
+        List<Transform> turretPositions = GetRandomPartOfList(ref walls, numberOfTurrets, true);
+        turretPositions.ForEach(cell => Instantiate(_turretPrefabs[Random.Range(0, _turretPrefabs.Length)], cell.position, Quaternion.identity, _turretRoot));
 
         //albert
         Vector2 position = Random.insideUnitCircle * _diameterOfSpawn;
@@ -82,37 +90,37 @@ public class MazeFiller : MonoBehaviour
         go.AddComponent<LookAt>().SetTarget(albert.transform);
 
         //power ups
-        int numberOfPowerUps = Mathf.RoundToInt(Random.Range(_minNumberOfPowerUps, _maxNumberOfPowerUps));
-        List<Vector3> powerUpsPositions = GetRandomPartOfList(ref empties, numberOfPowerUps, true);
-        powerUpsPositions.ForEach(cell => Instantiate(_powerUpsPrefabs[Random.Range(0, _powerUpsPrefabs.Length)], cell, Quaternion.identity, _powerUpsRoot));
+        int numberOfPowerUps = Random.Range(_minNumberOfPowerUps, _maxNumberOfPowerUps + 1);
+        List<Transform> powerUpsPositions = GetRandomPartOfList(ref empties, numberOfPowerUps, true);
+        powerUpsPositions.ForEach(cell => Instantiate(_powerUpsPrefabs[Random.Range(0, _powerUpsPrefabs.Length)], cell.position, Quaternion.identity, _powerUpsRoot));
     }
 
-    internal void Register(Vector3 position, MazeCell.CellType type)
+    internal void Register(Vector3 position, MazeCell type)
     {
         _mazeCells[position] = type;
     }
 
-    private void SplitTypes(out List<Vector3> walls, out List<Vector3> empties)
+    private void SplitTypes(out List<Transform> walls, out List<Transform> empties)
     {
-        walls = new List<Vector3>();
-        empties = new List<Vector3>();
-        foreach (KeyValuePair<Vector3, MazeCell.CellType> cell in _mazeCells)
+        walls = new List<Transform>();
+        empties = new List<Transform>();
+        foreach (KeyValuePair<Vector3, MazeCell> cell in _mazeCells)
         {
-            switch(cell.Value)
+            switch(cell.Value.TheCellType)
             {
                 case MazeCell.CellType.Empty:
-                    empties.Add(cell.Key);
+                    empties.Add(cell.Value.transform);
                     break;
                 case MazeCell.CellType.Wall:
-                    walls.Add(cell.Key);
+                    walls.Add(cell.Value.transform);
                     break;
             }
         }
     }
 
-    private List<Vector3> GetRandomPartOfList(ref List<Vector3> source, int numberOfElements, bool removeFromSource)
+    private List<Transform> GetRandomPartOfList(ref List<Transform> source, int numberOfElements, bool removeFromSource)
     {
-        List<Vector3> output = new List<Vector3>();
+        List<Transform> output = new List<Transform>();
         while (output.Count < numberOfElements)
         {
             int id = Random.Range(0, source.Count);

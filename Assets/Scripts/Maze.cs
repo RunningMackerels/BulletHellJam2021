@@ -24,6 +24,8 @@ public class Maze : MonoBehaviour
         NorthSouth
     }
 
+
+
     private Direction Opposite(Direction dir)
     {
         switch(dir)
@@ -58,31 +60,6 @@ public class Maze : MonoBehaviour
         }
     }
 
-    private Vector3 Delta3D(Direction dir)
-    {
-
-        if((dir & Direction.North) != 0)
-        {
-            return Vector3.forward;
-        }
-
-        if ((dir & Direction.South) != 0)
-        {
-            return Vector3.back;
-        }
-
-        if ((dir & Direction.East) != 0)
-        {
-            return Vector3.left;
-        }
-
-        if ((dir & Direction.West) != 0)
-        {
-            return Vector3.right;
-        }
-
-        return Vector3.zero;
-    }
 
 
     [Header("Maze Config")]
@@ -97,6 +74,9 @@ public class Maze : MonoBehaviour
     [SerializeField]
     private int _seed = 0;
 
+    [SerializeField]
+    private float _worldScale = 2f;
+
     [Header("Blocks")]
     [SerializeField]
     private GameObject[] _blocks;
@@ -108,8 +88,12 @@ public class Maze : MonoBehaviour
     [SerializeField]
     private bool _drawDebugCubes = false;
 
+    public float WorldScale => _worldScale;
+
 
     private void Awake() => DoMaze();
+
+
 
     [ContextMenu("New Maze")]
     private void DoMaze()
@@ -243,7 +227,7 @@ public class Maze : MonoBehaviour
             }
         }
 
-        transform.localScale = Vector3.one * 2f;
+        transform.localScale = Vector3.one * WorldScale;
     }
- 
+
 }

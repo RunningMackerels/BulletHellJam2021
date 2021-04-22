@@ -488,7 +488,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 919689658}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -631,7 +631,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Have you seen this cat?\n\nCubinger is lost in space/time. \nDr. neils
+  m_text: "Have you seen cubinger?\n\nCubinger is lost in space/time. \nDr. neils
     cubohr, the eternal rival of dr. albert cubestein, kidnapped cubinger, as he
     was the living proof of  albert\xB4s theories.\nNow, it\xB4s up to you to save
     cubinger and the fabric of space time itself.\nFind the cat in the ripples of
@@ -905,7 +905,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Have you seen this cat?
+  m_text: Have you seen cubinger?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 28272cc276f5345aa938d67b10bf09e1, type: 2}
   m_sharedMaterial: {fileID: -1280542337728415129, guid: 28272cc276f5345aa938d67b10bf09e1, type: 2}
@@ -1154,7 +1154,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 919689658}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}

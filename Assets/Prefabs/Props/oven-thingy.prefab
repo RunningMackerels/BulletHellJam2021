@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 6964488362888756749}
   - component: {fileID: 5508310929627159352}
   - component: {fileID: 8055257580716699479}
+  - component: {fileID: 6825447501105688756}
   m_Layer: 0
   m_Name: oven-thingy
   m_TagString: Untagged
@@ -143,3 +144,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Obstacle: {fileID: 5508310929627159352}
+--- !u!65 &6825447501105688756
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7776878629201585335}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 4, z: 2}
+  m_Center: {x: 0, y: -0.2, z: 0}

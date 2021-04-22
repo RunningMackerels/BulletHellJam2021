@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace PowerUps
@@ -16,13 +14,7 @@ namespace PowerUps
             Destroy(GetComponent<Collider>());
             Destroy(transform.GetChild(0).gameObject);
 
-            GetComponent<AudioSource>().Play();
-            Invoke("SelfDestruct", GetComponent<AudioSource>().clip.length);
-        }
-
-        protected void SelfDestruct()
-        {
-            Destroy(gameObject);
+            AudioSource.PlayClipAtPoint(GetComponent<AudioSource>().clip, transform.position);
         }
     }
 }

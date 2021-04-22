@@ -1169,10 +1169,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f00a8fc076114567a6d7ffb99032e7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 12, y: 12}
-  blockSize: {x: 2, y: 2}
-  offset: {x: -5.25, y: 0, z: -5.25}
-  blocks:
+  _size: {x: 12, y: 12}
+  _blockSize: {x: 2, y: 2}
+  _offset: {x: -5.25, y: 0.25, z: -5.25}
+  _seed: 0
+  _blocks:
   - {fileID: 8703444446439782464, guid: 8618c34586a2e4d6ca9397ae3021cafa, type: 3}
   - {fileID: 8327773697819184848, guid: 4ae303fa45b484499935cbeb98074685, type: 3}
 --- !u!4 &1112458375

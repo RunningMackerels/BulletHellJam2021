@@ -1,4 +1,0 @@
-[submodule "Assets/NavMeshComponents"]
-	path = Assets/NavMeshComponents
-	url = https://github.com/Unity-Technologies/NavMeshComponents.git
-	branch = package

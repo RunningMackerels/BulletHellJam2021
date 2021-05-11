@@ -1,16 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class MovePlayer : MonoBehaviour
 {
-    private const float SMALLNUMBER = 0.01f;
+    private const float SMALL_NUMBER = 0.01f;
     
-    [SerializeField] 
-    private float velocity = 2f;
+    [FormerlySerializedAs("velocity")] [SerializeField] 
+    private float _velocity = 2f;
 
     [SerializeField] 
     private float rampUpTime = 0.3f;
@@ -25,15 +22,15 @@ public class MovePlayer : MonoBehaviour
 
     private Vector3 _facing = Vector3.zero;
 
-    private NavMeshAgent _agent = null;
-
+    private CharacterController _playerController = null;
+    
     private void Awake()
     {
         _animator = GetComponentInChildren<Animator>();
-        _agent = GetComponent<NavMeshAgent>();
+        _playerController = GetComponent<CharacterController>();
     }
 
-    void OnMove(InputValue value)
+    private void OnMove(InputValue value)
     {
         var movement = value.Get<Vector2>();
         _direction = new Vector3(movement.x, 0f, movement.y);
@@ -43,7 +40,7 @@ public class MovePlayer : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Move();
     }
@@ -51,9 +48,10 @@ public class MovePlayer : MonoBehaviour
     private void Move()
     {
         _rampUpDirection = Vector3.SmoothDamp(_rampUpDirection, _direction, ref _smoothingDirection, rampUpTime);
-        _animator.SetBool(Running, _rampUpDirection.sqrMagnitude > SMALLNUMBER);
-        _agent.Move(_rampUpDirection * (velocity * TimeLord.Instance.DeltaTime));
-
+        _animator.SetBool(Running, _rampUpDirection.sqrMagnitude > SMALL_NUMBER);
+        
+        _playerController.Move(_rampUpDirection * (_velocity * TimeLord.Instance.DeltaTime));
+        
         float angle = _facing.x * 90.0f;
         angle -= _facing.z < 0f ? 180.0f : 0f;
         transform.rotation = Quaternion.Euler(Vector3.up * (angle));

@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3321711547099285357}
-  - component: {fileID: -5356441630780386925}
   - component: {fileID: 4224804170542724994}
   - component: {fileID: 3860012637610457388}
   m_Layer: 0
@@ -35,22 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!208 &-5356441630780386925
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2689431422092631511}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 1, y: 2, z: 1}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0.6, z: 0.2}
-  m_TimeToStationary: 0.5
 --- !u!114 &4224804170542724994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8f96d724c59e664f84c5c735226c7cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Obstacle: {fileID: -5356441630780386925}
+  _ObstacleCollider: {fileID: 3860012637610457388}
 --- !u!65 &3860012637610457388
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -5,15 +5,15 @@ using UnityEngine.AI;
 public class ObstacleRegisterer : MonoBehaviour
 {
     [SerializeField]
-    private NavMeshObstacle _Obstacle = null;
+    private Collider _ObstacleCollider = null;
 
     private void OnEnable()
     {
-        PowerUpManager.Instance.RegisterObstacle(_Obstacle);
+        PowerUpManager.Instance.RegisterObstacle(_ObstacleCollider);
     }
 
     private void OnDisable()
     {
-        PowerUpManager.Instance.UnregisterObstacle(_Obstacle);
+        PowerUpManager.Instance.UnregisterObstacle(_ObstacleCollider);
     }
 }

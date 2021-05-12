@@ -15,7 +15,7 @@ namespace PowerUps
 
         private List<Bullet> _activeBullets = new List<Bullet>();
 
-        private List<NavMeshObstacle> _obstacles = new List<NavMeshObstacle>();
+        private List<Collider> _obstacles = new List<Collider>();
 
         #region Light Bullets Members
         private IEnumerator _delayedLightBulletsStop = null;
@@ -56,12 +56,12 @@ namespace PowerUps
             _activeBullets.Remove(bullet);
         }
 
-        public void RegisterObstacle(NavMeshObstacle obstable)
+        public void RegisterObstacle(Collider obstable)
         {
             _obstacles.Add(obstable);
         }
 
-        public void UnregisterObstacle(NavMeshObstacle obstable)
+        public void UnregisterObstacle(Collider obstable)
         {
             _obstacles.Remove(obstable);
         }

@@ -136,7 +136,7 @@ namespace RM.Editor
         [MenuItem("RM/Build System")]
         private static void CreateWizard()
         {
-            BuildSystem window = (BuildSystem)EditorWindow.GetWindow(typeof(BuildSystem));
+            BuildSystem window = EditorWindow.GetWindow<BuildSystem>("Build System");
             window.Show();
         }
 

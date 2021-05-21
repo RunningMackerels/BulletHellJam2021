@@ -393,6 +393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2b545fd16e87c40bf1541e04e4725f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dontDestroyOnLoad: 0
 --- !u!4 &286701404
 Transform:
   m_ObjectHideFlags: 0
@@ -616,6 +617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c4a83c21567a04468eb37ce6e028203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _dontDestroyOnLoad: 1
   _CubbingerScore: 100
 --- !u!4 &714345967
 Transform:
@@ -1778,7 +1780,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4664439822344650278, guid: 75c0e2a547cc24b21a2a41c6a6ab7a36, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4664439822344650278, guid: 75c0e2a547cc24b21a2a41c6a6ab7a36, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

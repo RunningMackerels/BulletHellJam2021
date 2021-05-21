@@ -1,18 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using RM;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace PowerUps
 {
-    public class PowerUpManager : MonoBehaviour
+    public class PowerUpManager : Singleton<PowerUpManager>
     {
-        #region Singleton
-        private static PowerUpManager _instance;
-
-        public static PowerUpManager Instance => _instance;
-        #endregion //Singleton
-
         private List<Bullet> _activeBullets = new List<Bullet>();
 
         private List<Collider> _obstacles = new List<Collider>();
@@ -34,18 +29,6 @@ namespace PowerUps
 
         #endregion
 
-        private void Awake()
-        {
-            if (_instance != null && _instance != this)
-            {
-                DestroyImmediate(gameObject);
-            }
-            else
-            {
-                _instance = this;
-            }
-        }
-
         public void RegisterBullet(Bullet bullet)
         {
             _activeBullets.Add(bullet);
@@ -56,14 +39,14 @@ namespace PowerUps
             _activeBullets.Remove(bullet);
         }
 
-        public void RegisterObstacle(Collider obstable)
+        public void RegisterObstacle(Collider obstacle)
         {
-            _obstacles.Add(obstable);
+            _obstacles.Add(obstacle);
         }
 
-        public void UnregisterObstacle(Collider obstable)
+        public void UnregisterObstacle(Collider obstacle)
         {
-            _obstacles.Remove(obstable);
+            _obstacles.Remove(obstacle);
         }
 
         #region Light Bullets

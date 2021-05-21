@@ -1,14 +1,9 @@
 using System;
+using RM;
 using UnityEngine;
 
-public class TimeLord : MonoBehaviour
+public class TimeLord : Singleton<TimeLord>
 {
-    #region Singleton
-    private static TimeLord _instance;
-
-    public static TimeLord Instance => _instance;
-    #endregion //Singleton
-
     //serialized only for debug
     [SerializeField]
     private float _speedMultiplier = 1;
@@ -38,18 +33,6 @@ public class TimeLord : MonoBehaviour
 
     private float _levelTime = 10f;
     
-    private void Awake()
-    {
-        if (_instance != null && _instance != this)
-        {
-            DestroyImmediate(gameObject);
-        }
-        else
-        {
-            _instance = this;
-        }
-    }
-
     public void Update()
     {
         _levelTime -= DeltaTime;

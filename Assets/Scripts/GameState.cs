@@ -1,41 +1,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using RM;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameState : MonoBehaviour
+public class GameState : Singleton<GameState>
 {
-    #region Singleton
-    private static GameState _instance;
-
-    public static GameState Instance => _instance;
-    #endregion //Singleton
-
     public int Score { private set; get; } = 0;
 
     [SerializeField]
     private int _CubbingerScore = 100;
 
-    private void Awake()
-    {
-        if (_instance != null && _instance != this)
-        {
-            DestroyImmediate(gameObject);
-            return;
-        }
-        else
-        {
-            _instance = this;
-        }
-
-        DontDestroyOnLoad(gameObject);
-    }
-
     public void CubingerGrabbed()
     {
         Score += _CubbingerScore;
-        Debug.Log("WIN");
         SceneManager.LoadScene("PreMain");
     }
 
@@ -46,7 +25,6 @@ public class GameState : MonoBehaviour
 
     internal void GameOver()
     {
-        Debug.Log("GAME OVER");
         SceneManager.LoadScene("Start");
         Score = 0;
     }

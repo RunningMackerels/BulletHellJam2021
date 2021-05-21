@@ -31,7 +31,7 @@ namespace RM.Editor
                 
                 EditorUserBuildSettings.SwitchActiveBuildTargetAsync(ConvertBuildTarget(Target), Target);
             
-                string targetBuildFolder = Application.productName + "_" + Target.ToString() + "_" + Application.version;
+                string targetBuildFolder = Application.productName + "_" + Target.ToString();
                 string targetBuildFolderPath = Path.Combine(".", buildFolder, targetBuildFolder);
                 
                 string[] scenes = new string[EditorBuildSettings.scenes.Length];
@@ -73,6 +73,14 @@ namespace RM.Editor
                 {
                     CompressDirectory(targetBuildFolderPath, Path.Combine(".", buildFolder, targetBuildFolder + ".zip"));
                     Debug.Log("Build successfully zipped to " + targetBuildFolder + ".zip");
+                }
+
+                if (copyToDocs)
+                {
+                    string docsFolder = Application.dataPath + "/../docs";
+                    FileUtil.DeleteFileOrDirectory(docsFolder);
+
+                    FileUtil.CopyFileOrDirectory(targetBuildFolderPath, docsFolder);
                 }
             }
 

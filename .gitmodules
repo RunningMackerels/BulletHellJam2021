@@ -1,0 +1,4 @@
+[submodule "Assets/RM"]
+	path = Assets/RM
+	url = https://github.com/RunningMackerels/RM-Tools.git
+	branch = master

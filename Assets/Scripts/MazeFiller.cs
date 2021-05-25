@@ -60,7 +60,7 @@ public class MazeFiller : MonoBehaviour
     [SerializeField]
     private int _maxNumberOfPowerUps = 12;
 
-    private Dictionary<Vector3, MazeCell> _mazeCells = new Dictionary<Vector3, MazeCell>();
+    private Dictionary<Vector3, MazeCellOld> _mazeCells = new Dictionary<Vector3, MazeCellOld>();
 
     public void Fill()
     {
@@ -95,7 +95,7 @@ public class MazeFiller : MonoBehaviour
         powerUpsPositions.ForEach(cell => Instantiate(_powerUpsPrefabs[Random.Range(0, _powerUpsPrefabs.Length)], cell.position, Quaternion.identity, _powerUpsRoot));
     }
 
-    internal void Register(Vector3 position, MazeCell type)
+    internal void Register(Vector3 position, MazeCellOld type)
     {
         _mazeCells[position] = type;
     }
@@ -104,14 +104,14 @@ public class MazeFiller : MonoBehaviour
     {
         walls = new List<Transform>();
         empties = new List<Transform>();
-        foreach (KeyValuePair<Vector3, MazeCell> cell in _mazeCells)
+        foreach (KeyValuePair<Vector3, MazeCellOld> cell in _mazeCells)
         {
             switch(cell.Value.TheCellType)
             {
-                case MazeCell.CellType.Empty:
+                case MazeCellOld.CellType.Empty:
                     empties.Add(cell.Value.transform);
                     break;
-                case MazeCell.CellType.Wall:
+                case MazeCellOld.CellType.Wall:
                     walls.Add(cell.Value.transform);
                     break;
             }

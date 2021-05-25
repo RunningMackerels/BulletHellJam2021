@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MazeCell : MonoBehaviour
+public class MazeCellOld : MonoBehaviour
 {
     public enum CellType
     {
@@ -15,19 +15,19 @@ public class MazeCell : MonoBehaviour
 
     public void Init()
     {
-        Maze maze = FindObjectOfType<Maze>();
+        MazeOld maze = FindObjectOfType<MazeOld>();
         transform.GetComponentInParent<MazeFiller>().Register(transform.position * maze.WorldScale, this);
 
 
         if(_cellType == CellType.Wall)
         {
-            Maze.Direction direction = transform.parent.GetComponent<CubeDirection>().Direction;
+            MazeOld.Direction direction = transform.parent.GetComponent<CubeDirection>().Direction;
             switch (direction)
             {
-                case (Maze.Direction.East | Maze.Direction.West):
+                case (MazeOld.Direction.East | MazeOld.Direction.West):
                     transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
                     break;
-                case (Maze.Direction.North | Maze.Direction.South):
+                case (MazeOld.Direction.North | MazeOld.Direction.South):
                     transform.rotation = Quaternion.Euler(0.0f, 90.0f, 0.0f);
                     break;
 

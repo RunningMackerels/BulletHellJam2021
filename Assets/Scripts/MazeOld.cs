@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using RM;
 
-public class Maze : MonoBehaviour
+public class MazeOld : MonoBehaviour
 {
     [Flags]
     public enum Direction
@@ -192,7 +192,7 @@ public class Maze : MonoBehaviour
                     go.name = $"Cube.{count++}";
                     go.GetComponent<CubeDirection>()._direction = _grid[x, y];
 
-                    go.GetComponentsInChildren<MazeCell>().ToList().ForEach(item => item.Init());
+                    go.GetComponentsInChildren<MazeCellOld>().ToList().ForEach(item => item.Init());
 
                     if (_drawDebugCubes)
                     {
@@ -218,7 +218,7 @@ public class Maze : MonoBehaviour
                     go.name = $"Cube.{count++}";
                     go.GetComponent<CubeDirection>()._direction = _grid[x, y];
 
-                    go.GetComponentsInChildren<MazeCell>().ToList().ForEach(item => item.Init());
+                    go.GetComponentsInChildren<MazeCellOld>().ToList().ForEach(item => item.Init());
 
                     if (_drawDebugCubes)
                     {

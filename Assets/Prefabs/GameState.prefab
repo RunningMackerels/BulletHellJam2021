@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4664439822344650272
+--- !u!1 &709355822685362622
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4664439822344650278}
-  - component: {fileID: 4664439822344650279}
+  - component: {fileID: 709355822685362620}
+  - component: {fileID: 709355822685362621}
   m_Layer: 0
-  m_Name: TimeLord
+  m_Name: GameState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4664439822344650278
+--- !u!4 &709355822685362620
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4664439822344650272}
+  m_GameObject: {fileID: 709355822685362622}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,17 +31,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4664439822344650279
+--- !u!114 &709355822685362621
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4664439822344650272}
+  m_GameObject: {fileID: 709355822685362622}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 449b4a97ef6843845bcb3d0bcd2d059f, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c4a83c21567a04468eb37ce6e028203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _dontDestroyOnLoad: 0
-  _speedMultiplier: 1
+  _dontDestroyOnLoad: 1
+  _cubingerScore: 100
+  _levelSettings: {fileID: 11400000, guid: cb9972c2f5c3a6c4caa13dd274d98028, type: 2}

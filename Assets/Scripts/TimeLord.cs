@@ -31,13 +31,13 @@ public class TimeLord : Singleton<TimeLord>
 
     public float LevelTime => _levelTime;
 
-    private float _levelTime = 10f;
+    private float _levelTime = 0f;
     
     public void Update()
     {
         _levelTime -= DeltaTime;
 
-        if (_levelTime <= 0f)
+        if (_levelTime < 0f)
         {
             GameState.Instance.GameOver();
         }

@@ -9,11 +9,19 @@ public class ObstacleRegisterer : MonoBehaviour
 
     private void OnEnable()
     {
+        if (_ObstacleCollider == null)
+        {
+            _ObstacleCollider = GetComponent<Collider>();
+        }
         PowerUpManager.Instance.RegisterObstacle(_ObstacleCollider);
     }
 
     private void OnDisable()
     {
+        if (_ObstacleCollider == null)
+        {
+            return;
+        }
         PowerUpManager.Instance.UnregisterObstacle(_ObstacleCollider);
     }
 }

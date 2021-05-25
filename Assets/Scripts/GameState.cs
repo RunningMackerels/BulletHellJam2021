@@ -1,20 +1,30 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using RM;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameState : Singleton<GameState>
 {
-    public int Score { private set; get; } = 0;
+    [SerializeField]
+    private int _cubingerScore = 100;
 
     [SerializeField]
-    private int _CubbingerScore = 100;
+    private LevelSettings _levelSettings;
+    
+    public int Score { private set; get; } = 0;
 
+    private int _currentLevel = 0;
+    private float _timeFromLastLevel = 0f;
+    
+    public void StartNewLevel()
+    {
+        _currentLevel++;
+        TimeLord.Instance.SetLevelTime(_timeFromLastLevel + _levelSettings.GetLevel(_currentLevel).TimeToAdd);
+    }
+    
     public void CubingerGrabbed()
     {
-        Score += _CubbingerScore;
+        Score += _cubingerScore;
+        _timeFromLastLevel = TimeLord.Instance.LevelTime;
         SceneManager.LoadScene("PreMain");
     }
 
@@ -26,6 +36,8 @@ public class GameState : Singleton<GameState>
     internal void GameOver()
     {
         SceneManager.LoadScene("Start");
+        _timeFromLastLevel = 0f;
         Score = 0;
+        _currentLevel = 0;
     }
 }
